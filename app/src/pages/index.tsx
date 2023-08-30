@@ -4,6 +4,7 @@ import Link from 'next/link';
 import client from '@/lib/apolloClient';
 import Loader from "@/loader";
 import styles from './Home.module.css'
+import { useState } from "react";
 
 const PEOPLE_QUERY = gql`
 query People($page: Int){
@@ -17,8 +18,11 @@ query People($page: Int){
 }
 `;
 
+const PAGE_SIZE = 10;
+
 const Home = () => {
-  const { data } = useQuery(PEOPLE_QUERY, { client, variables: {page: 1 }});
+  const [currentPage, setCurrentPage] = useState(1)
+  const { data } = useQuery(PEOPLE_QUERY, { client, variables: {page: currentPage }});
 
   if(!data){
     return <Loader />
@@ -39,6 +43,22 @@ const Home = () => {
           </div>
         ))}
       </ul>
+      <div className={styles.pagination}>
+        <button
+          onClick={()=>setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous Page
+        </button>
+        <span>Page {currentPage}</span>
+        <button
+          onClick={()=> setCurrentPage(currentPage + 1) }
+          disabled={allPeople.length < PAGE_SIZE
+          }
+        >
+          Next Page
+        </button>
+      </div>
     </div>
   )
 }
