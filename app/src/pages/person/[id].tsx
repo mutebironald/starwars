@@ -2,6 +2,8 @@ import { useQuery } from "@apollo/client";
 import { gql } from 'graphql-tag';
 import { useRouter } from "next/router";
 import client from "@/lib/apolloClient";
+import styles  from './index.module.css';
+import Link from "next/link";
 
 
 const PERSON_QUERY = gql`
@@ -30,13 +32,17 @@ const PersonDetail = () => {
   const { findPerson } = data;
 
   return (
-    <div>
-      <h1>{findPerson.name}</h1>
-      <p>Height: {findPerson.height}</p>
-      <p>Mass: {findPerson.mass}</p>
-      <p>Gender: {findPerson.gender}</p>
-      <p>HomeWorld: {findPerson.homeworld}</p>
-      <p><a href="/">Back to People</a></p>
+    <div className={styles.container}>
+      <div className={styles.personCard}>
+        <h1>{findPerson.name}</h1>
+        <p>Height: {findPerson.height}</p>
+        <p>Mass: {findPerson.mass}</p>
+        <p>Gender: {findPerson.gender}</p>
+        <p>HomeWorld: <a href={findPerson.homeworld}>{findPerson.homeworld}</a></p>
+      </div>
+      <Link href="/" legacyBehavior>
+        <a className={styles['back-button']}>Back to Home</a>
+      </Link>
     </div>
   )
 }

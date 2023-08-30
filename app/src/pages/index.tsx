@@ -27,7 +27,7 @@ const Home = () => {
 
   return(
     <div className={styles.container}>
-      <h1>Star Wars Characters</h1>
+      <h1 className={styles.heading}>Star Wars Characters</h1>
       <ul>
         {allPeople.map((person: any) => (
           <div key={person.name} className={styles['person-card']}>
