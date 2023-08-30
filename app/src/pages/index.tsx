@@ -34,7 +34,7 @@ const Home = () => {
             <Link href={`/person/${encodeURIComponent(person.name)}`}>{person.name}</Link>
             <p>Height: {person.height}</p>
             <p>Mass: {person.mass}</p>
-            <p>Homeword: {person.homeworld}</p>
+            <p>HomeWorld: <a href={person.homeworld}>{person.homeworld}</a></p>
             <p>Gender: {person.gender}</p>
           </div>
         ))}
