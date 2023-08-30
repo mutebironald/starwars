@@ -13,6 +13,6 @@ export const typeDefs = gql`
     
     type Query {
       allPeople(page: Int): [Person]
-      findPerson(person: String): Person
+      findPerson(name: String): Person
     }
 `;
