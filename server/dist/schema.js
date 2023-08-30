@@ -14,6 +14,6 @@ exports.typeDefs = (0, apollo_server_1.gql) `
     
     type Query {
       allPeople(page: Int): [Person]
-      findPerson(person: String): Person
+      findPerson(name: String): Person
     }
 `;
