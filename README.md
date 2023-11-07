@@ -55,4 +55,19 @@ docker build -t starwars-backend .
 docker run -p 4000:4000 -d starwars-backend
 ```
 
-- access your application on [local](http://localhost:3000)
+- access  application on [local](http://localhost:3000)
+
+## Running with Docker Compose
+
+You can easily set up and run both the app and server containers using Docker Compose. Follow these steps:
+
+1. Ensure you have Docker and Docker Compose installed on your system.
+
+2. Navigate to the project's root directory in your terminal.
+
+3. Run the following command to start the containers:
+   
+   ```sh
+   docker-compose up
+   ```
+4. access application on [local](http://localhost:3000)
